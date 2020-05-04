@@ -1,0 +1,175 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="connected.master.cs" Inherits="ASP_Gallery.connected" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <%--<link rel="stylesheet" href="styles/debug.css">--%>
+    <link href="styles/helpers.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/@creativebulma/bulma-badge@1.0.1/dist/bulma-badge.min.css" rel="stylesheet" />
+
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+
+</head>
+<body>
+    <form id="form1" runat="server">
+
+
+
+        <section class="hero">
+
+            <div class="hero-head card">
+
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+
+                        <asp:HyperLink ID="Logo" class="navbar-item" href="start.aspx" Text="About" runat="server">
+                            <img src="images/logo.png" width="112" height="28" />
+                        </asp:HyperLink>
+
+
+
+                        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+                    </div>
+
+                    <div id="navbarBasicExample" class="navbar-menu">
+                        <div class="navbar-start">
+
+                            <asp:HyperLink ID="Home" class="navbar-item" href="start.aspx" Text="Home" runat="server"></asp:HyperLink>
+                            <asp:HyperLink ID="Gallery" class="navbar-item" href="gallery.aspx" Text="Gallery" runat="server">
+                            </asp:HyperLink>
+                            <%
+                                if (is_admin)
+                                {
+                            %>
+                            <asp:HyperLink ID="Admin" class="navbar-item" href="admin.aspx" Text="Admin" runat="server"></asp:HyperLink>
+                            <%
+                                }
+                                else
+                                {%>
+                            <div class="navbar-item has-dropdown is-hoverable">
+
+                                <asp:HyperLink ID="More" class="navbar-link" href="gallery.aspx" Text="More" runat="server"></asp:HyperLink>
+
+
+                                <div class="navbar-dropdown">
+                                    <asp:HyperLink ID="About" class="navbar-item" href="gallery.aspx" Text="About" runat="server"></asp:HyperLink>
+                                    <asp:HyperLink ID="Jobs" class="navbar-item" href="gallery.aspx" Text="Jobs" runat="server"></asp:HyperLink>
+                                    <asp:HyperLink ID="Contact" class="navbar-item" href="gallery.aspx" Text="Contact" runat="server"></asp:HyperLink>
+
+                                    <hr class="navbar-divider">
+
+                                    <asp:HyperLink ID="Report" class="navbar-item" href="gallery.aspx" Text="Report an issue" runat="server"></asp:HyperLink>
+
+
+                                </div>
+                            </div>
+                            <%}
+                            %>
+                        </div>
+
+                        <div class="navbar-end">
+
+
+                            <%if (is_connected)
+                                {%>
+                            <div class="navbar-item has-dropdown is-hoverable">
+
+
+
+                                <asp:HyperLink ID="username_button" class="navbar-link" href="gallery.aspx" Text="" runat="server"></asp:HyperLink>
+
+
+                                <div class="navbar-dropdown">
+                                    <asp:HyperLink ID="HyperLink1" class="navbar-item" href="gallery.aspx" Text="profile" runat="server"></asp:HyperLink>
+
+                                    <hr class="navbar-divider">
+
+                                    <div class="buttons">
+                                        <asp:Label ID="status_label" Text="" class="help is-danger" runat="server" />
+                                        <asp:Button ID="logout" class="navbar-item button is-danger is-outlined" Text="logout" OnClick="logout_Click" runat="server" />
+
+
+
+
+                                    </div>
+                                    <hr class="navbar-divider">
+                                    <asp:CheckBox ID="checkbox" runat="server" />
+
+
+
+                                </div>
+
+                            </div>
+
+
+                            <%}
+                                else
+                                {%>
+
+                            <div class="navbar-item">
+                                <div class="buttons">
+                                    <asp:HyperLink ID="signup" class="button is-primary" href="register.aspx" Text="Sign up" runat="server"></asp:HyperLink>
+                                    <asp:HyperLink ID="login" class="button is-light" href="login.aspx" Text="Login" runat="server"></asp:HyperLink>
+                                </div>
+                            </div>
+
+
+                            <%  }
+                            %>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </section>
+        <%--<div class="hero-body is-fullheight">
+        
+        </div>--%>
+
+        <div class="hero-body">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+    </form>
+    <script src="http://www.google.com/recaptcha/api.js?render=6LfPuPEUAAAAAMwgM0bbqy4ckOHcQarXypuAflNj"></script>
+    <script>
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6LfPuPEUAAAAAMwgM0bbqy4ckOHcQarXypuAflNj', { action: 'homepage' }).then(function (token) {
+                $.ajax({
+                    type: "POST",
+                    url: "Default.aspx/SetToken",
+                    data: JSON.stringify({ _token: token }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        console.log('Passed the token successfully');
+                    },
+                    failure: function (response) {
+                        alert(response.d);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
