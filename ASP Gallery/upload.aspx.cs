@@ -101,9 +101,7 @@ namespace ASP_Gallery
 
         protected void new_album_button_Click(object sender, EventArgs e)
         {
-            Response.Redirect("new_album.aspx");
-
-
+            Server.Transfer("new_album.aspx");
         }
 
         protected void DropDownAlbumList_SelectedIndexChanged(object sender, EventArgs e)

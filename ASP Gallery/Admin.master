@@ -1,13 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/connected.Master" AutoEventWireup="true" CodeBehind="admin.aspx.cs" Inherits="ASP_Gallery.WebForm6" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/connected.Master" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="ASP_Gallery.Admin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <%@ Import Namespace="ASP_Gallery.appCode" %>
     <%@ Import Namespace="System.Data" %>
 
 
     <link href="styles/admin.css" rel="stylesheet" />
     <div class="container">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        </asp:ContentPlaceHolder>
         <div class="columns">
             <div class="column is-3 ">
 
@@ -81,7 +82,7 @@
                         <div class="card events-card">
                             <header class="card-header">
                                 <p class="card-header-title">
-                                    Events
+                                    Users
                                 </p>
                                 <a href="#" class="card-header-icon" aria-label="more options">
                                     <span class="icon">
@@ -92,6 +93,10 @@
 
                             <div class="card-table">
                                 <div class="content">
+
+                                    <asp:GridView ID="Users_table" runat="server">
+                                        
+                                    </asp:GridView>
                                     <%--<table class="table is-fullwidth is-striped">
                                         <tbody>
                                             <tr>
@@ -206,5 +211,4 @@
     </div>
 
     <script async type="text/javascript" src="../js/bulma.js"></script>
-
 </asp:Content>

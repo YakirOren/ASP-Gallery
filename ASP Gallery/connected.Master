@@ -47,6 +47,7 @@
                             <span aria-hidden="true"></span>
                             <span aria-hidden="true"></span>
                             <span aria-hidden="true"></span>
+
                         </a>
                     </div>
 
@@ -136,7 +137,6 @@
                             <%  }
                             %>
                         </div>
-                    </div>
                 </nav>
             </div>
         </section>
@@ -150,26 +150,6 @@
         </div>
 
     </form>
-    <script src="http://www.google.com/recaptcha/api.js?render=6LfPuPEUAAAAAMwgM0bbqy4ckOHcQarXypuAflNj"></script>
-    <script>
-        grecaptcha.ready(function () {
-            grecaptcha.execute('6LfPuPEUAAAAAMwgM0bbqy4ckOHcQarXypuAflNj', { action: 'homepage' }).then(function (token) {
-                $.ajax({
-                    type: "POST",
-                    url: "Default.aspx/SetToken",
-                    data: JSON.stringify({ _token: token }),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (response) {
-                        console.log('Passed the token successfully');
-                    },
-                    failure: function (response) {
-                        alert(response.d);
-                    }
-                });
-            });
-        });
-    </script>
 
 </body>
 </html>

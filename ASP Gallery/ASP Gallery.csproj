@@ -122,8 +122,16 @@
     <Content Include="admin.aspx" />
     <Content Include="upload.aspx" />
     <Content Include="new_album.aspx" />
+    <Content Include="Tables.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.master.cs">
+      <DependentUpon>Admin.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.master.designer.cs">
+      <DependentUpon>Admin.master</DependentUpon>
+    </Compile>
     <Compile Include="appCode\DatabaseAccess.cs" />
     <Compile Include="appCode\DBF %281%29.cs" />
     <Compile Include="connected.Master.cs">
@@ -190,9 +198,17 @@
     <Compile Include="new_album.aspx.designer.cs">
       <DependentUpon>new_album.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Tables.aspx.cs">
+      <DependentUpon>Tables.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tables.aspx.designer.cs">
+      <DependentUpon>Tables.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="connected.Master" />
+    <Content Include="Admin.master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

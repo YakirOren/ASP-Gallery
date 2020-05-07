@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/connected.Master" AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="ASP_Gallery.WebForm3" %>
 
-<%@ Register TagPrefix="recaptcha" Namespace="Recaptcha" Assembly="Recaptcha" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container ">
@@ -78,9 +77,7 @@
 
             <div class="column">
     
-                <div class="container">
-                    <input type="hidden" id="recaptcha" name="recaptcha" />
-                </div>
+                
             </div>
 
 

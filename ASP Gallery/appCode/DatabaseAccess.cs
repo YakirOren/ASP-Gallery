@@ -157,31 +157,21 @@ namespace ASP_Gallery.appCode
             void_execute(string.Format("insert into [ALBUMS] ([NAME], [CREATION_DATE], [USER_ID]) VALUES ('{0}' ,'{1}', {2});", albumName , DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss"), userId.ToString()));
         }
 
+        
+
 
 
     }
 }
 
-//   // album related
-//  public const std::list<Album> getAlbums(); //✔
-//	public const std::list<Album> getAlbumsOfUser(const User& user) ; //✔
-//	public void createAlbum(const Album& album) ; //✔ 
+
 //	public void deleteAlbum(const std::string& albumName, int userId) ; //✔
-//	 ; //✔
-//	public Album openAlbum(string albumName) ; // ✔
-//	public void closeAlbum(Album& pAlbum) ; // search how to close.
-//	public void printAlbums(); //✔ 
-
-
-
-
 //	user statistics
-//	public int countAlbumsOwnedOfUser(const User& user) ; //✔ 
+
 //	public int countAlbumsTaggedOfUser(const User& user) ;
-//	public int countTagsOfUser(const User& user) ;
+//	public int countTagsOfUser(const User& user);
 //	public float averageTagsPerAlbumOfUser(const User& user) ;
 
-//	// queries
 //	public User getTopTaggedUser() ; //✔ 
 //		public Picture getTopTaggedPicture() ;
 //		public std::list<Picture> getTaggedPicturesOfUser(const User& user) ;  //✔ 

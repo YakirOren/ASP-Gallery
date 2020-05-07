@@ -148,10 +148,6 @@
 
 
                             <script type="text/javascript" src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
-
-
-
-
                         </article>
                     </div>
                     <%
