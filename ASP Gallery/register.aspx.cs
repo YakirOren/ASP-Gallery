@@ -41,14 +41,11 @@ namespace ASP_Gallery
                 this.email.CssClass = "input is-danger";
             }
 
-            if (validate_username() && validate_email() && validate_password() && ReCaptchaPassed(Request.Form["recaptcha"])) // if the username is valid continue
+            if (validate_username() && validate_email() && validate_password()) // if the username is valid continue
             {
                 DatabaseAccess.createUser(username.Text, password.Text, false, email.Text);
                 Response.Redirect("login.aspx");
             }
-
-
-            
 
         }
 
@@ -88,53 +85,17 @@ namespace ASP_Gallery
 
         private bool validate_password()
         {
-            //int score = CheckStrength(password.Text);
-            //Response.Write( score.ToString());
-            //progressPercent.Attributes["value"] = (score*20).ToString();
             return !String.IsNullOrEmpty(password.Text);
         }
 
 
-        private static int CheckStrength(string password)
-        {
-            
-            int score = 0;
-
-            if (password.Length < 1)
-                return 0;
-            if (password.Length < 4)
-                return 1;
-                
-            if (password.Length >= 8)
-                score++;
-            if (password.Length >= 12)
-                score++;
-            
-
-            return score + 2;
-            
-        }
-
         protected void password_TextChanged(object sender, EventArgs e)
         {
             validate_password();
-            //username_available.Text = password.Text;
+            
         }
 
-        public static bool ReCaptchaPassed(string gRecaptchaResponse)
-        {
-            HttpClient httpClient = new HttpClient();
-            var res = httpClient.GetAsync($"https://www.google.com/recaptcha/api/siteverify?secret=6LfPuPEUAAAAAP7Gi8MgHw-8TP7gVMtm_CBtCLJb&response={gRecaptchaResponse}").Result;
-            if (res.StatusCode != HttpStatusCode.OK)
-                return false;
-
-            string JSONres = res.Content.ReadAsStringAsync().Result;
-            dynamic JSONdata = JObject.Parse(JSONres);
-            if (JSONdata.success != "true")
-                return false;
-
-            return true;
-        }
+        
 
     }
 }

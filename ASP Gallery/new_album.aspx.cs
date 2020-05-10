@@ -4,24 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using ASP_Gallery.appCode;
 
 namespace ASP_Gallery
 {
-    public partial class WebForm8 : System.Web.UI.Page
+    public partial class WebForm8 : SessionPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["username"] == null)
-            {
-                Response.Redirect("login.aspx");
-            }
-            else
-            {
-                
-            }
-
 
         }
 

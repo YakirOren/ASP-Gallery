@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/connected.Master" AutoEventWireup="true" CodeBehind="start.aspx.cs" Inherits="ASP_Gallery.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/connected.Master" AutoEventWireup="true" CodeBehind="start.aspx.cs" Inherits="ASP_Gallery.WebForm1" enableSessionState="true"%>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

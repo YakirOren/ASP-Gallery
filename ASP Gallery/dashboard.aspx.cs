@@ -8,11 +8,8 @@ using ASP_Gallery.appCode;
 
 namespace ASP_Gallery
 {
-    public partial class WebForm2 : System.Web.UI.Page
+    public partial class WebForm10 : AdminSessionPage
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }

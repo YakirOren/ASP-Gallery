@@ -12,34 +12,21 @@ using System.Configuration;
 
 namespace ASP_Gallery
 {
-    public partial class WebForm7 : System.Web.UI.Page
+    public partial class WebForm7 : AdminSessionPage
     {
-        public bool is_connected = false;
-        protected void Page_Load(object sender, EventArgs e)
+        protected new void Page_Load(object sender, EventArgs e)
         {
-            if (Session["username"] != null)
+            getDataFromSession();
+
+            if (!check_connection() && !is_admin)
             {
-               
-                is_connected = true;
-
-                DropDownAlbumList.DataSource = DatabaseAccess.getAllAlbums(int.Parse(Session["ID"].ToString()));
-
-                DropDownAlbumList.DataTextField = "NAME";
-                DropDownAlbumList.DataValueField = "ID";
-
-
-
-                DropDownAlbumList.DataBind();
-
-            }
-            else
-            {
-                Response.Redirect("gallery.aspx");
+                Response.Redirect("login.aspx");
             }
 
-
-
-
+            DropDownAlbumList.DataSource = DatabaseAccess.getAllAlbums(int.Parse(Session["ID"].ToString()));
+            DropDownAlbumList.DataTextField = "NAME";
+            DropDownAlbumList.DataValueField = "ID";
+            DropDownAlbumList.DataBind();
 
         }
 
@@ -69,7 +56,7 @@ namespace ASP_Gallery
                             StatusLabel.CssClass = "help is-success";
 
 
-                            DatabaseAccess.addPictureToAlbumByName(int.Parse(DropDownAlbumList.SelectedItem.Value), title.Text, "images/" + filename);;
+                            DatabaseAccess.addPictureToAlbumByName(int.Parse(DropDownAlbumList.SelectedItem.Value), title.Text, "images/" + filename); ;
 
                         }
                         else

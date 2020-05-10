@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/connected.Master" AutoEventWireup="true" CodeBehind="new_album.aspx.cs" Inherits="ASP_Gallery.WebForm8" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/connected.Master" AutoEventWireup="true" CodeBehind="new_album.aspx.cs" Inherits="ASP_Gallery.WebForm8" enableSessionState="true"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container ">

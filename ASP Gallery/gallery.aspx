@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/connected.Master" AutoEventWireup="true" CodeBehind="gallery.aspx.cs" Inherits="ASP_Gallery.WebForm5" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/connected.Master" AutoEventWireup="true" CodeBehind="gallery.aspx.cs" Inherits="ASP_Gallery.WebForm5" enableSessionState="true"%>
 
 
 <%@ Import Namespace="ASP_Gallery.appCode" %>

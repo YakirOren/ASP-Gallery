@@ -61,7 +61,7 @@
                                 if (is_admin)
                                 {
                             %>
-                            <asp:HyperLink ID="Admin" class="navbar-item" href="admin.aspx" Text="Admin" runat="server"></asp:HyperLink>
+                            <asp:HyperLink ID="Admin" class="navbar-item" href="dashboard.aspx" Text="Admin" runat="server"></asp:HyperLink>
                             <%
                                 }
                                 else
@@ -93,9 +93,6 @@
                             <%if (is_connected)
                                 {%>
                             <div class="navbar-item has-dropdown is-hoverable">
-
-
-
                                 <asp:HyperLink ID="username_button" class="navbar-link" href="gallery.aspx" Text="" runat="server"></asp:HyperLink>
 
 
@@ -137,13 +134,14 @@
                             <%  }
                             %>
                         </div>
+                        </div>
                 </nav>
             </div>
+
         </section>
         <%--<div class="hero-body is-fullheight">
         
         </div>--%>
-
         <div class="hero-body">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>

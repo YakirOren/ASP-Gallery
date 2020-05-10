@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ASP_Gallery.appCode;
 
 namespace ASP_Gallery
 {
@@ -13,26 +14,25 @@ namespace ASP_Gallery
         public bool is_admin = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (Session["username"] != null)
             {
-                is_admin = bool.Parse(Session["admin"].ToString());
+                if (Session["admin"] != null)
+                {
+                    is_admin = bool.Parse(Session["admin"].ToString());
+
+                }
+
                 username_button.Text = Session["username"].ToString();
                 is_connected = true;
 
+            }
 
-            }
-            catch (Exception)
-            {
-                is_connected = false;
-            }
 
 
         }
 
         protected void logout_Click(object sender, EventArgs e)
         {
-
-
             if (checkbox.Checked)
             {
                 Session.Abandon();
