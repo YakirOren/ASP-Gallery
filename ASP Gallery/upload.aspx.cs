@@ -23,6 +23,15 @@ namespace ASP_Gallery
                 Response.Redirect("login.aspx");
             }
 
+            //DropDownAlbumList.Items.Add();
+
+            //for ()
+            //{
+
+            //}
+
+
+
             DropDownAlbumList.DataSource = DatabaseAccess.getAllAlbums(int.Parse(Session["ID"].ToString()));
             DropDownAlbumList.DataTextField = "NAME";
             DropDownAlbumList.DataValueField = "ID";

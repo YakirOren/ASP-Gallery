@@ -10,7 +10,7 @@ namespace ASP_Gallery
 {
     public partial class WebForm9 : AdminSessionPage
     {
-        protected new void Page_Load(object sender, EventArgs e)
+        protected new void Page_Load(object sender, EventArgs e)    
         {
 
             getDataFromSession();

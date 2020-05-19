@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/connected.Master" AutoEventWireup="true" CodeBehind="gallery.aspx.cs" Inherits="ASP_Gallery.WebForm5" enableSessionState="true"%>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/connected.Master" AutoEventWireup="true" CodeBehind="gallery.aspx.cs" Inherits="ASP_Gallery.WebForm5" EnableSessionState="true" %>
 
 <%@ Import Namespace="ASP_Gallery.appCode" %>
 <%@ Import Namespace="System.Data" %>
@@ -19,6 +18,7 @@
 
         <%if (!is_connected)
             { %>
+        <!-- this is a card that shows if the user is not connected. -->
         <div id="notConnectedMsg" class="column" runat="server">
             <article class="media notification is-info">
                 <figure class="media-left">
@@ -40,6 +40,7 @@
         <div class="columns">
             <div class="column"></div>
 
+            <!--this is an upload button, redirects to upload.aspx. -->
             <div id="upload" class="column" runat="server">
                 <a href="upload.aspx" class="media notification is-primary">
                     <figure class="media-left">
@@ -58,9 +59,6 @@
             <div class="column"></div>
         </div>
 
-
-
-
         <%} %>
 
 
@@ -69,8 +67,7 @@
             <div class="container">
                 <div class="columns is-multiline">
                     <%
-
-
+                        
                         foreach (DataRow row in DatabaseAccess.getAllPictures().Rows)
                         {
 
@@ -96,10 +93,8 @@
                             <div id='<%: "modal-image" + row["ID"].ToString()%>' class="modal modal-fx-superScaled">
                                 <div class="modal-background"></div>
                                 <div class="modal-content is-huge is-image">
-                                    <!-- content -->
                                     <img src='<%: row["LOCATION"]%>' />
 
-                                    <!-- end content -->
                                 </div>
                                 <button class="modal-close is-large" aria-label="close"></button>
                             </div>
@@ -108,10 +103,9 @@
                             <div id='<%: "modal-card" + row["ID"].ToString()%>' class="modal modal-fx-3dSlit">
                                 <div class="modal-background"></div>
                                 <div class="modal-content is-tiny">
-                                    <!-- content -->
                                     <div class="card">
                                         <div class="card-image">
-                                            <figure class="image is-4by2">
+                                            <figure class="image is-4by4">
 
                                                 <img src='<%: row["LOCATION"]%>' />
 
@@ -128,12 +122,11 @@
                                                     </nav>
 
                                                     <p class="title is-4"><%: row["NAME"] %></p>
-                                                    <%--<p class="subtitle is-6">@yakiroren</p>--%>
                                                 </div>
                                             </div>
 
                                             <div class="content">
-
+                                                <!--load tags here from the database.-->
                                                 <a href="#">#tags</a>
                                                 <a href="#">#tags</a>
                                                 <br>
@@ -141,7 +134,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- end content -->
+
                                 </div>
                                 <button class="modal-close is-large" aria-label="close"></button>
                             </div>
@@ -155,9 +148,5 @@
                 </div>
             </div>
         </section>
-
-
-
-
     </div>
 </asp:Content>

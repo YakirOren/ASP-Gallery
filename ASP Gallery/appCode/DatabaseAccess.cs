@@ -11,10 +11,8 @@ namespace ASP_Gallery.appCode
     public class DatabaseAccess
     {
         private static OleDbConnection db;
-        public DatabaseAccess()
-        {
 
-        }
+        /*this function executes the sql string and returns a datatable*/
         private static DataTable execute(string sqlstring)
         {
             open();
@@ -26,6 +24,8 @@ namespace ASP_Gallery.appCode
             close();
             return dt;
         }
+        
+        /*this function executes the sql string and does not return a value.*/
         private static void void_execute(string sqlstring)
         {
             open();
@@ -33,12 +33,16 @@ namespace ASP_Gallery.appCode
             com.ExecuteNonQuery();
             close();
         }
+
+        /*this function executes the sql string and returns a int value, can be used for sql with count()*/
         private static int int_execute(string sqlstring)
         {
             DataTable dt = execute(sqlstring);
 
             return int.Parse(dt.Rows[0][0].ToString());
         }
+
+        /*opens connection to the db.*/
         private static void open()
         {
             db = new OleDbConnection();
@@ -46,21 +50,26 @@ namespace ASP_Gallery.appCode
             db.Open();
 
         }
+        /*closes the connection with the db.*/
         private static void close()
         {
             db.Close();
 
         }
 
-        // user related
+        /*this function returns a datatable with all the users form the database.*/
         public static DataTable getAllUsers()
         {
             return execute("select * from users;");
         }
+
+        /*this function checks if the user exists in the database by a user ID.*/
         public static bool doesUserExistsByID(int userId)
         {
             return int_execute("select count(*) from users where id = " + userId.ToString() + ";") != 0;
         }
+
+        /*this function checks if the user exists in the database by a user name.*/
         public static bool doesUserExistsByName(string username)
         {
             return int_execute("select count(*) from users where name = '" + username + "';") != 0;
@@ -71,37 +80,44 @@ namespace ASP_Gallery.appCode
         {
             return int_execute("select count(*) from users where name = '" + username + "' and password= '" + password + "';") != 0;
         }
+
+        /*this function creates a new user*/
         public static void createUser(string name, string password, bool isAdmin, string email)
         {
             void_execute(string.Format("insert into [USERS] ([NAME], [PASSWORD], [ADMIN], [EMAIL]) VALUES ('{0}' ,'{1}', {2},'{3}');", name, password, isAdmin.ToString().ToLower(), email));
         }
 
-        //public void deleteUser(int userId)
-        //{
-        //    var album_list = getAlbumsOfUser(user);
+        /*this function deletes a user from the database.*/
+        public void deleteUser(int userId)
+        {
+            //var album_list = getAlbumsOfUser(userId);
 
-        //    void_execute("delete from tags where user id = " + userId.ToString() + ";"); // delete tags
+            //void_execute("delete from tags where user id = " + userId.ToString() + ";"); // delete tags
 
-        //    for (auto & album : album_list) // delete the pictures in the albums 
-        //    {
-        //        void_execute("delete from pictures where ALBUM_ID = " + album.getOwnerId() + ";");
+            //for (auto & album : album_list) // delete the pictures in the albums 
+            //{
+            //    void_execute("delete from pictures where ALBUM_ID = " + album.getOwnerId() + ";");
 
-        //    }
+            //}
 
-        //    void_execute("delete from albums where USER_ID = " + userId.ToString() + ";"); // delete the users albums.
+            //void_execute("delete from albums where USER_ID = " + userId.ToString() + ";"); // delete the users albums.
 
-        //    void_execute("delete from users where ID=" + userId.ToString() + ";"); // delete the user.
-        //}
+            //void_execute("delete from users where ID=" + userId.ToString() + ";"); // delete the user.
+        }
 
+        /*this function returns a user from the data base, by user id*/
         public static DataTable getUser(int userId)
         {
             return execute("select * from users where ID= " + userId.ToString() + ";");
         }
+
+        /*this function returns a user from the data base, by user name and password.*/
         public static DataTable getUser(string username, string password)
         {
             return execute("select * from users where name = '" + username + "' and password= '" + password + "';");
         }
-        // picture related
+        
+
         public static void addPictureToAlbumByName(int albumID, string pictureNAME, string pictureLOCATION)
         {
             void_execute(string.Format("insert into [PICTURES] ([NAME], [LOCATION], [CREATION_DATE], [ALBUM_ID]) VALUES ('{0}' ,'{1}', '{2}',{3});", pictureNAME, pictureLOCATION, DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss"), albumID.ToString()));
@@ -163,16 +179,3 @@ namespace ASP_Gallery.appCode
 
     }
 }
-
-
-//	public void deleteAlbum(const std::string& albumName, int userId) ; //✔
-//	user statistics
-
-//	public int countAlbumsTaggedOfUser(const User& user) ;
-//	public int countTagsOfUser(const User& user);
-//	public float averageTagsPerAlbumOfUser(const User& user) ;
-
-//	public User getTopTaggedUser() ; //✔ 
-//		public Picture getTopTaggedPicture() ;
-//		public std::list<Picture> getTaggedPicturesOfUser(const User& user) ;  //✔ 
-
