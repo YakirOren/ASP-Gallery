@@ -49,6 +49,13 @@ namespace ASP_Gallery
             GridView1.DataBind();
         }
 
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+            this.GridView1.DataKeys[e.RowIndex].Value.ToString();
+
+
+        }
 
     }
 }

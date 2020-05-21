@@ -21,14 +21,6 @@
 
             <div class="column">
 
-               <%-- <div class=" has-text-centered single-spaced card" style="top: 92px; bottom: 92px;">
-                    <h2 class="subtitle is-3 has-text-weight-light has-text-black"></h2>
-                    <h1 class="title is-1 has-text-black">Welcome</h1>
-
-                    <h1 class="subtitle is-3 has-text-weight-light has-text-black"></h1>
-
-                </div>--%>
-
             </div>
 
             <div class="column">

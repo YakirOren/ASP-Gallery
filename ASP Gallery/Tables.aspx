@@ -45,7 +45,12 @@
                         </div>
                     </div>
 
-                    <asp:GridView ID="GridView1" class="table is-fullwidth is-striped" runat="server">
+                    <asp:GridView ID="GridView1" class="table is-fullwidth is-striped" runat="server" OnRowDeleting="GridView1_RowDeleting">
+
+                        <Columns>
+                            
+                            <asp:CommandField ShowDeleteButton="true" ControlStyle-CssClass="button is-danger"/>
+                        </Columns>
                     </asp:GridView>
                 </article>
             </div>

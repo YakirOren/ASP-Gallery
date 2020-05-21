@@ -67,7 +67,7 @@
             <div class="container">
                 <div class="columns is-multiline">
                     <%
-                        
+
                         foreach (DataRow row in DatabaseAccess.getAllPictures().Rows)
                         {
 
@@ -84,7 +84,18 @@
                                         <img id="" src='<%: row["LOCATION"]%>' width="200" height="150" />
 
                                     </a>
-                                    <a class="button is-primary is-outlined modal-button" data-target='<%: "modal-card" + row["ID"].ToString()%>'>open</a>
+
+                                    <div class="columns">
+                                        <div class="column">
+                                        </div>
+                                        <div class="column">
+                                            <a class="button is-primary is-outlined modal-button" data-target='<%: "modal-card" + row["ID"].ToString()%>'>open</a>
+
+                                        </div>
+                                        <div class="column">
+                                        </div>
+                                    </div>
+
 
                                 </div>
                             </div>

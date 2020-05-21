@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/connected.Master" AutoEventWireup="true" CodeBehind="upload.aspx.cs" Inherits="ASP_Gallery.WebForm7" enableSessionState="true"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/connected.Master" AutoEventWireup="true" CodeBehind="upload.aspx.cs" Inherits="ASP_Gallery.WebForm7" EnableSessionState="true" %>
 
 
 <%@ Import Namespace="ASP_Gallery.appCode" %>
@@ -37,9 +37,9 @@
                         <%if (DatabaseAccess.getAllAlbums(int.Parse(Session["ID"].ToString())).Rows.Count != 0)
                             {%>
                         <p>Select album: </p>
-                        <asp:DropDownList ID="DropDownAlbumList" runat="server" OnSelectedIndexChanged="DropDownAlbumList_SelectedIndexChanged" OnTextChanged="DropDownAlbumList_TextChanged" >
-                            
-                            <asp:ListItem Text="text" Value=1 />
+                        <asp:DropDownList ID="DropDownAlbumList" runat="server" OnSelectedIndexChanged="DropDownAlbumList_SelectedIndexChanged" OnTextChanged="DropDownAlbumList_TextChanged">
+
+                            <asp:ListItem Text="text" Value="1" />
 
 
                         </asp:DropDownList>

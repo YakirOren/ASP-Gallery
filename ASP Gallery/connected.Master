@@ -28,8 +28,6 @@
 <body>
     <form id="form1" runat="server">
 
-
-
         <section class="hero">
 
             <div class="hero-head card">
@@ -134,7 +132,7 @@
                             <%  }
                             %>
                         </div>
-                        </div>
+                    </div>
                 </nav>
             </div>
 
